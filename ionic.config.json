@@ -1,0 +1,7 @@
+{
+  "name": "pbd_front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

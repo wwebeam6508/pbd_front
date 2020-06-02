@@ -14,45 +14,50 @@ export class WorksPage implements OnInit {
   constructor(public modalController: ModalController, private firestore: AngularFirestore) {}
 
   async ngOnInit() {
-    const items = await this.firestore.collection('works').valueChanges()
-    await items.subscribe(async (item) =>{
+    await this.firestore.collection('works').valueChanges({idField: 'id'})
+    .subscribe(async (item:any) =>{ 
       this._albums = []
-      await item.forEach(work => {
-        this._albums.push(work)
+      await item.forEach(async work => {
+        await this._albums.push(work)
       })
       await this.freewall(this._albums)
     })
   }
 
-  async presentModal() {
-    console.log('test')
+  async workModal(set) {
     const modal = await this.modalController.create({
-      component: WorkPage
+      component: WorkPage,
+      cssClass: 'customModal',
+      componentProps: {
+        'title': set.title,
+        'detail': set.detail,
+        'id': set.id
+      }
     });
     return await modal.present();
   }
   
   async freewall(set){
     let Freewall:any = "freewall" in window ? window['freewall'] : '';
-    var temp = "<div id='{id}' class='cell' style='width:{width}px;height:{height}px;background-image: url({img});background-size: cover;background-position: center;' >"
+    let temp = "<div id='{id}' class='cell' style='width:{width}px;height:{height}px;background-image: url({img});background-size: cover;background-position: center;' >"
       +"<div class='cell-item' >"
         + "<div class='cover'><h5>{title}</h5></div>"
       + "</div>"
     + "</div>"
-    var w = 1, html = '';
+    let w = 1, html = '';
     const random_item = await this.shuffle(set)
     const name_id = 'Rooms'
-    for (var i = 0; i < random_item.length; ++i) {
+    for (let i = 0; i < random_item.length; ++i) {
       w = 300 +  200 * Math.random() << 0;
       html += temp.replace(/\{id\}/g, `${name_id}${i}`).replace(/\{height\}/g, '350').replace(/\{width\}/g, w.toString()).replace(/\{img\}/g, random_item[i].image).replace(/\{title\}/g, random_item[i].title)
     }
     $("#freewall").html(html);
-    for (var i = 0; i < random_item.length; ++i) {
-      $(`#${name_id}${i}`).click((event) => {
-        this.presentModal()
+    for (let i = 0; i < random_item.length; ++i) {
+      $(`#${name_id}${i}`).click(() => {
+        this.workModal(this._albums[i])
       })
     }
-    var wall = new Freewall("#freewall");
+    let wall = new Freewall("#freewall");
     wall.reset({
       selector: '.cell',
       animate: true,

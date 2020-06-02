@@ -1,0 +1,41 @@
+.btn:focus, .btn:active, button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  #image-gallery .modal-footer{
+    display: block;
+  }
+  
+  .thumb{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .thumbnail{
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .thumbnail:hover{
+    background-color: black;
+  }
+
+.bordertitle{
+    border-top: 5px;
+    border-top-style: groove;
+    border-bottom: 5px;
+    border-bottom-style: groove;
+    margin: 10px;
+}
+
+.main {
+    margin: 10px;
+}
+.gallary {
+    margin: 10px;
+}
+.img-thumbnail {
+    max-width: 100%;
+}
+  

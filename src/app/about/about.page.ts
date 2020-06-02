@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AngularFirestore } from '@angular/fire/firestore';
 @Component({
   selector: 'app-about',
   templateUrl: './about.page.html',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPage implements OnInit {
 
-  constructor() { }
+  private image
+  private detail
 
-  ngOnInit() {
+  constructor(private firestore: AngularFirestore) { }
+
+  async ngOnInit() {
+    await this.firestore.collection('about').valueChanges()
+    .subscribe(async (set:any) => {
+      this.image = set[0].image
+      this.detail = set[0].detail
+    })
   }
 
 }

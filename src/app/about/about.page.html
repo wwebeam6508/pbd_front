@@ -2,35 +2,20 @@
 
 <ion-content>
   <app-header></app-header>
-  <div class="container">
-    <div id="intro" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
-      <ul class="carousel-indicators">
-        <li *ngFor="let item of intro;let i = index" data-target="#intro" data-slide-to="{i}" [ngClass]="{'active': item.active ? true : false}" ></li>
-      </ul>
-    
-      <!-- The slideshow -->
-      <div class="carousel-inner">
-        <div *ngFor="let item of intro;let i = index" [ngClass]="{'active': item.active ? true : false}" class="carousel-item">
-          <img src="{{item.image}}" (click)="open(i)" width="100%" height="500vh">
-          <div class="carousel-caption">
-            <h3>{{item.caption}}</h3>
-            <p>{{item.description}}</p>
-          </div>
-        </div>
-      </div>
-      <!-- Left and right controls -->
-      <a class="carousel-control-prev" href="#intro" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-      </a>
-      <a class="carousel-control-next" href="#intro" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-      </a>
+  <div>
+    <div class="title ion-text-center">
+      <h3>เกี่ยวกับเรา</h3>
     </div>
-    <div>
-      กหฟกฟหก
+    <div class="main row">
+      <div class="col-sm-6 col-md-6">
+        <img [src]="image">
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <ion-textarea>
+          {{ detail }}
+        </ion-textarea>
+      </div>
     </div>
   </div>
-  
   <app-footer></app-footer>
 </ion-content>

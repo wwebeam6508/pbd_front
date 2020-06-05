@@ -48,7 +48,7 @@ export class WorksPage implements OnInit {
     const random_item = await this.shuffle(set)
     const name_id = 'Rooms'
     for (let i = 0; i < random_item.length; ++i) {
-      w = 300 +  200 * Math.random() << 0;
+      w = 350 +  200 * Math.random() << 0;
       html += temp.replace(/\{id\}/g, `${name_id}${i}`).replace(/\{height\}/g, '350').replace(/\{width\}/g, w.toString()).replace(/\{img\}/g, random_item[i].image).replace(/\{title\}/g, random_item[i].title)
     }
     $("#freewall").html(html);

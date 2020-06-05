@@ -10,14 +10,56 @@
     margin: 10px;
 }
 
+@media only screen and (max-width: 768px) {
+    .imageone {
+        position: absolute;
+        margin-bottom: 120px;
+        width: 200px;
+        height: 200px;
+    }
+    .imagetwo {
+        margin-top: 150px;
+        margin-left: 100px;
+        width: 200px;
+        height: 200px;
+    }
+    .detail {
+        margin-top: 20px;
+    }
+}
 @media only screen and (min-width: 768px) {
+    
+    .imageone {
+        position: absolute;
+        margin-bottom: 120px;
+        width: 200px;
+        height: 200px;
+    }
+    .imagetwo {
+        margin-top: 150px;
+        margin-left: 150px;
+        width: 200px;
+        height: 200px;
+    }
+    .detail {
+        margin-top: 150px;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    
     .imageone {
         position: absolute;
         margin-bottom: 150px;
+        width: 350px;
+        height: 350px;
     }
-    
     .imagetwo {
-        margin-top: 200px;
+        margin-top: 150px;
         margin-left: 250px;
+        width: 350px;
+        height: 350px;
+    }
+    .detail {
+        margin-bottom: 150px;
     }
 }

@@ -3,17 +3,24 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as $ from 'jquery';
 import { ModalController } from '@ionic/angular';
 import { WorkPage } from '../modal/work/work.page';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-works',
   templateUrl: './works.page.html',
   styleUrls: ['./works.page.scss'],
 })
 export class WorksPage implements OnInit {
-
+  private loading
   private _albums  = [];
-  constructor(public modalController: ModalController, private firestore: AngularFirestore) {}
+  constructor(private loadingController: LoadingController, public modalController: ModalController, private firestore: AngularFirestore) {}
 
   async ngOnInit() {
+    this.loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 500
+    })
+    await this.loading.present()
     await this.firestore.collection('works').valueChanges({idField: 'id'})
     .subscribe(async (item:any) =>{ 
       this._albums = []
@@ -22,6 +29,7 @@ export class WorksPage implements OnInit {
       })
       await this.freewall(this._albums)
     })
+    await this.loading.onDidDismiss()
   }
 
   async workModal(set) {

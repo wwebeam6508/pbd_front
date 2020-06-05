@@ -7,7 +7,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AboutPage implements OnInit {
 
-  private image
+  private imageone
+  private imagetwo
   private detail
 
   constructor(private firestore: AngularFirestore) { }
@@ -15,7 +16,8 @@ export class AboutPage implements OnInit {
   async ngOnInit() {
     await this.firestore.collection('about').valueChanges()
     .subscribe(async (set:any) => {
-      this.image = set[0].image
+      this.imageone = set[0].imageone
+      this.imagetwo = set[0].imagetwo
       this.detail = set[0].detail
     })
   }

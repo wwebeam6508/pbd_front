@@ -62,7 +62,7 @@ export class WorksPage implements OnInit {
       selector: '.cell',
       animate: true,
       cellW: 35,
-      cellH: 200,
+      cellH: 150,
       onResize: function() {
         wall.fitWidth();
       }

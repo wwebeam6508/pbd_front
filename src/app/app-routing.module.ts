@@ -35,6 +35,10 @@ const routes: Routes = [
       preload: true
     }
   },
+  {
+    path: 'service',
+    loadChildren: () => import('./service/service.module').then( m => m.ServicePageModule)
+  },
 ];
 
 @NgModule({

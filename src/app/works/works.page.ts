@@ -18,7 +18,7 @@ export class WorksPage implements OnInit {
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      duration: 500
+      duration: 1
     })
     await this.loading.present()
     await this.firestore.collection('works').valueChanges({idField: 'id'})
@@ -28,8 +28,9 @@ export class WorksPage implements OnInit {
         await this._albums.push(work)
       })
       await this.freewall(this._albums)
+      await this.loading.onDidDismiss()
     })
-    await this.loading.onDidDismiss()
+    
   }
 
   async workModal(set) {

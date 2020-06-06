@@ -18,7 +18,7 @@ export class AboutPage implements OnInit {
     this.loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      duration: 500
+      duration: 1
     })
     await this.loading.present()
     await this.firestore.collection('about').valueChanges()
@@ -26,8 +26,8 @@ export class AboutPage implements OnInit {
       this.imageone = set[0].imageone
       this.imagetwo = set[0].imagetwo
       this.detail = set[0].detail
+      await this.loading.onDidDismiss()
     })
-    await this.loading.onDidDismiss()
   }
 
 }

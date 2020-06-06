@@ -1,8 +1,8 @@
 import { Component, OnInit, Input  } from '@angular/core';
-import * as $ from 'jquery';
 import { Lightbox } from 'ngx-lightbox';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-work',
   templateUrl: './work.page.html',
@@ -14,7 +14,8 @@ export class WorkPage implements OnInit{
 
   @Input() id: string
   private images
-  constructor(private modalCtrl:ModalController, private _lightbox: Lightbox, private firestore: AngularFirestore) { }
+  private loading
+  constructor(private loadingController: LoadingController, private modalCtrl:ModalController, private _lightbox: Lightbox, private firestore: AngularFirestore) { }
 
   open(index: number): void {
     // open lightbox
@@ -33,6 +34,12 @@ export class WorkPage implements OnInit{
   }
 
   async ngOnInit () {
+    this.loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 1
+    })
+    await this.loading.present()
     await this.firestore.collection('works').doc(this.id).collection('images').valueChanges({idField: 'id'})
     .subscribe(async (setimage:any) => {
       this.images = await setimage.map((image)=>{
@@ -42,6 +49,7 @@ export class WorkPage implements OnInit{
           thumb: image.url
         }
       })
+      await this.loading.onDidDismiss()
     })
   }
 }

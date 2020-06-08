@@ -9,11 +9,10 @@
   height: 100%; 
   @media only screen and (max-width: 768px) {
     display: block;
-    padding-top: 125px;
-    padding-bottom: 125px;
+    height: 500px;
   }
   @media only screen and (min-width: 769px) {
-    padding: 350px;
+    height: 1000px;
   }
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
@@ -22,8 +21,14 @@
   background-size: cover;
 }
 
-.mainone {
+.maintext {
   color: white;
+  @media only screen and (max-width: 768px) {
+    padding-top: 250px;
+  }
+  @media only screen and (min-width: 769px) {
+    padding-top: 500px;
+  }
   animation: onefade 1s;
 }
 

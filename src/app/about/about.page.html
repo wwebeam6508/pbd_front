@@ -7,7 +7,7 @@
       <h3>เกี่ยวกับเรา</h3>
     </div>
     <div class="main row">
-      <div class="imagegroup col-sm-12 col-md-12 col-xl-6 text-center">
+      <div *ngIf="imageone && imagetwo" class="imagegroup col-sm-12 col-md-12 col-xl-6 text-center">
         <img class="imageone" slot="start" [src]="imageone">
         <img class="imagetwo" slot="end" [src]="imagetwo">
       </div>

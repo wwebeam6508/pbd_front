@@ -13,8 +13,8 @@ import { LightboxModule } from 'ngx-lightbox';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 
-import { SimpleLoadingStrategy } from './simple-loading-strategy';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,10 +24,10 @@ import { SimpleLoadingStrategy } from './simple-loading-strategy';
     IonicModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AnimateOnScrollModule
   ],
   providers: [
-    SimpleLoadingStrategy,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

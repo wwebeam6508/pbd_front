@@ -1,11 +1,20 @@
 
-
+.scroll {
+  overflow: scroll;
+}
 .parallax {
   /* The image used */
   /* Full height */
   background-attachment: scroll;
   height: 100%; 
-  padding: 350px;
+  @media only screen and (max-width: 768px) {
+    display: block;
+    padding-top: 125px;
+    padding-bottom: 125px;
+  }
+  @media only screen and (min-width: 769px) {
+    padding: 350px;
+  }
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -15,8 +24,7 @@
 
 .mainone {
   color: white;
-  animation: onefade 2s;
-  text-shadow: 2px 2px black;
+  animation: onefade 1s;
 }
 
 @keyframes onefade {
@@ -25,15 +33,9 @@
 }
 
 .maintwo {
-  -webkit-appearance: none;
   color: white;
-  animation: onefade 2s;
-  text-shadow: 2px 2px black;
 }
 
 .mainthree {
-  -webkit-appearance: none;
   color: white;
-  animation: onefade 2s;
-  text-shadow: 2px 2px black;
 }

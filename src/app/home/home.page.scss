@@ -5,28 +5,29 @@
 .parallax {
   /* The image used */
   /* Full height */
-  background-attachment: scroll;
+  
   height: 100%; 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1024px) {
     display: block;
     height: 500px;
   }
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 1025px) and (min-height: 500px) {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 1000px;
   }
   /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+  
   background-size: cover;
 }
 
 .maintext {
   color: white;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1024px) {
     padding-top: 250px;
   }
-  @media only screen and (min-width: 769px) {
+  @media only screen and (min-width: 1025px) and (min-height: 500px){
     padding-top: 500px;
   }
   animation: onefade 1s;
@@ -35,12 +36,4 @@
 @keyframes onefade {
   from   {opacity: 0%;margin-top: 250px;}
   to {opacity: 100%;margin-top: 0px;}
-}
-
-.maintwo {
-  color: white;
-}
-
-.mainthree {
-  color: white;
 }
